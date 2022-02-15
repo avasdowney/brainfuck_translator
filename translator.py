@@ -17,6 +17,7 @@ with open(sys.argv[1]) as f:
         bf = bf + '.>'
 
     # write to brainfuck file
-    with open('translation.bf', 'w') as f:
+    with open(sys.argv[2], 'w') as f:
         f.write(bf)
-
+    
+    print("\nFile successfully translated")
