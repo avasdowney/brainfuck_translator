@@ -1,18 +1,22 @@
-# code taken from https://mathspp.com/blog/writing-interpreter-in-15-loc
+# code modified from https://mathspp.com/blog/writing-interpreter-in-15-loc
 
+import sys
 from sys import*
 import io
 import os
-V = argv
-V.extend([""]*2)
-stdin = io.StringIO(V[2])if V[2]else stdin
-r = os.path.exists(V[1])
-f = r and open(V[1])
-b = f.read()if r else V[1]
-r and f.close()
 
 
-def I(b, t, p):
+with open(sys.argv[1], 'r') as f:
+    b = f.read()
+
+# Interprets and runs brainfuck code
+#
+# vars:
+#   b = brainfuck code
+#   t = tape
+#   p = pointer
+#
+def Interpret(b, t, p):
     while b:  # interpret while there's code
         c, *b = b
         c = "+-><,.[]".find(c)  # get next op
@@ -33,10 +37,8 @@ def I(b, t, p):
             j = [d := d+(x == "[")-(x == "]")for x in b].index(0)
             b, b_ = b[j+1:], b[:j]
             while t[p]:
-                t, p = I(b_, t, p)  # loop while memory cell is non-zero
+                t, p = Interpret(b_, t, p)  # loop while memory cell is non-zero
     return t, p
 
-
-t, p = I(b, [0], 0)
+t, p = Interpret(b, [0], 0)
 print()
-print(t, p)  # interpret and print debugging info
