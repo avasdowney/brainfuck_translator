@@ -6,7 +6,7 @@ Translates .txt files into brainfuck code
 ## How to run program
 In terminal, run `python3 translator.py {input filename.txt} {output filename.bf}` to translate a txt file of your choice into brainfuck.
 
-To use the interpreter to run brainfuck code, run `python3 interpret.py {filename.bf}`.
+To use the interpreter to run brainfuck code, run `python3 interpretor.py {filename.bf}`.
 
 ### Example
 This txt file below can be translated into Brainfuck code.
@@ -20,7 +20,7 @@ The resulting Brainfuck code from the command can be seen here.
 ![bf](manual_tests/screenshots/c3.png)
 
 
-This can then be translated using `python3 brainfuck.py manual_tests/big_smokes_order.bf` seen below.
+This can then be translated using `python3 interpretor.py manual_tests/big_smokes_order.bf` seen below.
 ![output](manual_tests/screenshots/c2.png)
 
 ## Sources
